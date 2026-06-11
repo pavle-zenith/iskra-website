@@ -1,0 +1,29 @@
+# Iskra
+
+> Iskra je aplikacija za prestanak pušenja napravljena za Srbiju (srpski jezik, latinica). Trenutno je u pred-lansiranju (Early Access lista čekanja).
+
+Iskra (Iskra Club) pomaže ljudima da prestanu da puše tako što pruža podršku baš u trenutku kada se javi poriv za cigaretom. Za razliku od aplikacija koje samo broje dane, Iskra nudi konkretne alate za akutni momenat žudnje.
+
+> Iskra is a quit-smoking app built for the Serbian market. It is currently pre-launch (Early Access waitlist).
+
+## Ključne funkcije / Key features
+- Poriv mod: 6 alata za trenutak žudnje (disanje, voda, moji razlozi, šetnja, odlaganje, beleženje) koji te vode kroz tih 3–5 minuta dok poriv ne prođe.
+- Praćenje napretka: dani bez cigarete, ušteđeni novac (RSD), cigarete koje nisi zapalio, vraćeno vreme.
+- Milestoni: zdravstvene i lične prekretnice koje se otključavaju kako napreduješ.
+- Baza znanja na srpskom: kratki tekstovi o navici, porivima i oporavku.
+- Personalizovan plan: kratak kviz pravi plan prema tvojim okidačima i navikama.
+- Bez osude: pad je deo puta; Iskra te vraća bez krivice.
+
+## Status
+- Pred-lansiranje. App Store i Google Play verzije su u pripremi ("Uskoro").
+- Prijava preko Early Access liste čekanja na sajtu.
+- Cena još nije javno objavljena; Early Access korisnici dobijaju početnu ponudu.
+
+## Pristup / Approach
+Pristup je zasnovan na javno dostupnim smernicama i istraživanjima o prestanku pušenja (npr. WHO, Mayo Clinic, NHS, CDC). Iskra nije medicinski tretman niti zamena za lekara.
+
+## Linkovi / Links
+- Sajt: https://iskraclub.com
+- Kviz: https://quiz.iskraclub.com
+- Instagram: https://instagram.com/iskraclub_
+- TikTok: https://tiktok.com/@iskraclub
