@@ -56,6 +56,14 @@ h1,h2,h3{margin:0;letter-spacing:-.025em;font-weight:700;line-height:1.05;}
 .h-sec{font-size:clamp(30px,4.4vw,52px);line-height:1.07;}
 .lead{color:var(--muted);font-size:clamp(16px,1.5vw,19px);line-height:1.6;font-weight:400;}
 .section{padding:clamp(72px,9vw,128px) 0;}
+/* condense the doubled gap between two consecutive plain (page-background) sections:
+   drop the top padding of the second so the gap is a single section-pad, not two.
+   Colored/distinct sections (empathy/has-mtn/toolkit/joinflow/reviews/mech/compare)
+   are excluded so color boundaries keep their breathing room. */
+.section:not(.empathy):not(.has-mtn):not(.toolkit):not(.joinflow):not(.reviews-section):not(.mech):not(.compare)
+  + .section:not(.empathy):not(.has-mtn):not(.toolkit):not(.joinflow):not(.reviews-section):not(.mech):not(.compare){
+  padding-top:0;
+}
 .center{text-align:center;}
 .accent{color:var(--ember);}
 .light{font-weight:300;}
@@ -268,14 +276,14 @@ h1,h2,h3{margin:0;letter-spacing:-.025em;font-weight:700;line-height:1.05;}
 .toolkit .lead{color:rgba(255,255,255,.66);}
 .tool-rail{display:flex;gap:20px;margin-top:50px;margin-left:calc(50% - 50vw);margin-right:calc(50% - 50vw);padding:4px calc(50vw - 50%) 14px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x proximity;-webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none;}
 .tool-rail::-webkit-scrollbar{display:none;}
-.tslide{flex:0 0 clamp(230px,27%,300px);scroll-snap-align:center;position:relative;border-radius:26px;overflow:hidden;min-height:340px;display:flex;flex-direction:column;justify-content:flex-end;padding:22px;transition:transform .35s;}
+.tslide{flex:0 0 clamp(280px,30%,372px);scroll-snap-align:center;position:relative;border-radius:26px;overflow:hidden;min-height:500px;display:flex;flex-direction:column;justify-content:flex-end;padding:26px;transition:transform .35s;}
 .tslide:hover{transform:translateY(-6px);}
 .tslide .ph{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;}
 .tslide .scrim{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,8,6,0) 38%,rgba(10,8,6,.22) 66%,rgba(10,8,6,.7) 100%);z-index:2;pointer-events:none;}
 .tslide .eyb{position:relative;z-index:3;font-size:11.5px;font-weight:800;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.72);}
 .tslide h3{position:relative;z-index:3;font-size:23px;color:#fff;margin:7px 0 8px;}
 .tslide p{position:relative;z-index:3;font-size:14px;line-height:1.5;color:rgba(255,255,255,.85);margin:0;}
-.rail-nav{display:flex;gap:10px;justify-content:flex-end;margin-top:28px;}
+.rail-nav{display:flex;gap:10px;justify-content:center;margin-top:28px;}
 .rail-nav button{width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.06);color:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .2s,opacity .2s;}
 .rail-nav button:hover{background:rgba(255,255,255,.16);}
 .tool-more{margin-top:22px;color:rgba(255,255,255,.6);font-size:14px;text-align:center;}
@@ -575,6 +583,8 @@ h1,h2,h3{margin:0;letter-spacing:-.025em;font-weight:700;line-height:1.05;}
   /* taller, touch-friendly inputs in hero + footer */
   .hero-form input{height:56px;font-size:16px;}
   .foot-cta .hero-form input{height:56px;}
+  /* toolkit "PORIV" cards: keep the shorter/narrower size on mobile only */
+  .tslide{flex:0 0 clamp(230px,72vw,300px);min-height:340px;padding:22px;}
   /* chart: scaled-down bars on mobile */
   .chart{min-height:240px;gap:8px;}
   .chart .col:nth-child(1) .bar{height:52px;}
