@@ -11,8 +11,13 @@ function fmt(n: number) {
   return Math.round(n).toLocaleString('sr-RS').replace(/,/g, '.');
 }
 
-// Heights match the prototype's hard-coded peak proportions (px).
-const HEIGHTS = ['84px', '150px', '240px', '400px'];
+function hexToRgba(hex: string, a: number) {
+  const h = hex.replace('#', '');
+  const r = parseInt(h.slice(0, 2), 16);
+  const g = parseInt(h.slice(2, 4), 16);
+  const b = parseInt(h.slice(4, 6), 16);
+  return `rgba(${r},${g},${b},${a})`;
+}
 
 const PILL_META: { key: MetricKey; label: string; dotBg: string; stroke: string; icon: React.ReactNode }[] = [
   {
@@ -53,13 +58,16 @@ const PILL_META: { key: MetricKey; label: string; dotBg: string; stroke: string;
   },
 ];
 
+const INITIAL = [...CHART_METRICS.money.v];
+
 export default function SavingsChart() {
   const [metric, setMetric] = useState<MetricKey>('money');
-  const [values, setValues] = useState<number[]>([0, 0, 0, 0]);
+  // Start at the real money values so the chart is never blank (SSR / no-JS / pre-scroll).
+  const [values, setValues] = useState<number[]>(INITIAL);
   const chartRef = useRef<HTMLDivElement>(null);
   const started = useRef(false);
   const raf = useRef<number | null>(null);
-  const current = useRef<number[]>([0, 0, 0, 0]);
+  const current = useRef<number[]>([...INITIAL]);
 
   const animateTo = useCallback((target: number[]) => {
     if (raf.current) cancelAnimationFrame(raf.current);
@@ -90,11 +98,16 @@ export default function SavingsChart() {
   useEffect(() => {
     const el = chartRef.current;
     if (!el) return;
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduce) return; // keep the real values, skip the count-up
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
           if (e.isIntersecting && !started.current) {
             started.current = true;
+            // reset to 0 then count up to the money values
+            current.current = [0, 0, 0, 0];
+            setValues([0, 0, 0, 0]);
             animateTo([...CHART_METRICS.money.v]);
             io.unobserve(e.target);
           }
@@ -151,11 +164,11 @@ export default function SavingsChart() {
             <div className={`col${peak ? ' peak' : ''}`} key={label}>
               <div
                 className={`bar${peak ? ' peak' : ''}`}
-                style={{
-                  // @ts-expect-error custom prop
-                  '--h': HEIGHTS[i],
-                  ...(peak ? { background: m.grad, boxShadow: 'var(--shadow-ember)' } : {}),
-                }}
+                style={
+                  peak
+                    ? { background: m.grad, boxShadow: `0 14px 34px ${hexToRgba(m.col, 0.34)}` }
+                    : { boxShadow: `0 10px 24px ${hexToRgba(m.col, 0.18)}` }
+                }
               >
                 <div className="v">
                   <b className="num">{fmt(values[i])}</b>

@@ -34,7 +34,7 @@ export default function Hero() {
             Iskra ti pomaže baš u trenutku kada ti se zapali. Dan po dan, poriv po poriv, bez
             osuđivanja.
           </p>
-          <div style={{ marginTop: 30, width: '100%', maxWidth: 460 }}>
+          <div className="hero-form-wrap" style={{ width: '100%', maxWidth: 460 }}>
             <WaitlistForm location="hero" />
           </div>
           <StoreBadges />

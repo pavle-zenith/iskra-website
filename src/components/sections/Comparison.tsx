@@ -101,12 +101,13 @@ export default function Comparison() {
             Iskra naspram ostalih
           </h2>
         </Reveal>
+        <div className="compare-scroll">
         <Reveal className="ctable" delay={1}>
           <div className="ch ch-feat" />
           <div className="ch hl">
             <div className="logos">
               <span className="mk">
-                <Image src="/brand/iskra-logo-sm.png" alt="" width={34} height={34} aria-hidden="true" />
+                <Image src="/brand/iskra-flame-white.png" alt="" width={60} height={60} aria-hidden="true" />
               </span>
             </div>
             <span className="nm">Iskra</span>
@@ -147,6 +148,7 @@ export default function Comparison() {
             </div>
           ))}
         </Reveal>
+        </div>
       </div>
     </section>
   );

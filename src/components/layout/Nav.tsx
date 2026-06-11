@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import { NAV_LINKS } from '@/lib/constants';
+import { NAV_LINKS, QUIZ_URL } from '@/lib/constants';
 import { track } from '@/lib/analytics';
 
 export default function Nav() {
@@ -28,7 +28,7 @@ export default function Nav() {
         <div className="nav-inner">
           <a className="brand" href="#top">
             <span className="mk">
-              <Image src="/brand/iskra-logo-sm.png" alt="" width={34} height={34} priority />
+              <Image src="/brand/iskra-flame-white.png" alt="" width={34} height={34} priority />
             </span>
             ISKRA
           </a>
@@ -40,7 +40,7 @@ export default function Nav() {
             ))}
           </nav>
           <div className="nav-cta">
-            <a href="#cta" className="btn btn-primary" onClick={() => track.navCtaClicked()}>
+            <a href={QUIZ_URL} className="btn btn-primary" onClick={() => track.quizCtaClicked('nav')}>
               Uradi kviz
             </a>
             <button
@@ -70,10 +70,10 @@ export default function Nav() {
           </a>
         ))}
         <a
-          href="#cta"
+          href={QUIZ_URL}
           className="btn btn-primary mm-cta"
           onClick={() => {
-            track.navCtaClicked();
+            track.quizCtaClicked('nav-mobile');
             setMenuOpen(false);
           }}
         >

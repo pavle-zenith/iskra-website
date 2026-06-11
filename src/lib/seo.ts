@@ -1,7 +1,7 @@
-import { SITE_URL, SITE_NAME, INSTAGRAM_URL, TIKTOK_URL, FACEBOOK_URL } from './constants';
+import { SITE_URL, SITE_NAME, INSTAGRAM_URL, TIKTOK_URL } from './constants';
 import { FAQ_ITEMS } from './sections-data';
 
-const sameAs = [INSTAGRAM_URL, TIKTOK_URL, FACEBOOK_URL];
+const sameAs = [INSTAGRAM_URL, TIKTOK_URL];
 
 export const organizationSchema = {
   '@context': 'https://schema.org',

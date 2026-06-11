@@ -45,7 +45,7 @@ export default function Footer() {
           <div>
             <a className="brand" href="#top">
               <span className="mk">
-                <Image src="/brand/iskra-logo-sm.png" alt="" width={34} height={34} aria-hidden="true" />
+                <Image src="/brand/iskra-flame-white.png" alt="" width={34} height={34} aria-hidden="true" />
               </span>
               ISKRA
             </a>
@@ -99,11 +99,6 @@ export default function Footer() {
             <a href="https://www.tiktok.com/@iskraclub" aria-label="TikTok" target="_blank" rel="noopener noreferrer">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff" aria-hidden="true">
                 <path d="M16 3c.3 2.3 1.8 4 4 4.2v3c-1.5 0-2.9-.5-4-1.3v6.3a6 6 0 1 1-6-6c.3 0 .7 0 1 .1v3.2a2.8 2.8 0 1 0 2 2.7V3h3z" />
-              </svg>
-            </a>
-            <a href="https://www.facebook.com/iskraclub" aria-label="Facebook" target="_blank" rel="noopener noreferrer">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff" aria-hidden="true">
-                <path d="M14 8h2V5h-2c-2 0-3 1.3-3 3.3V10H9v3h2v8h3v-8h2.2l.8-3H14V8.6c0-.4.3-.6.7-.6z" />
               </svg>
             </a>
           </div>

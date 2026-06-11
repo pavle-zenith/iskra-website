@@ -1,4 +1,5 @@
 import Reveal from '@/components/ui/Reveal';
+import QuizLink from '@/components/ui/QuizLink';
 
 const CARDS = [
   { delay: 1 as const, ph: 'Pre poriva', h: 'Iskra te priprema', p: 'Zna tvoje okidače i unapred te naoruža planom za trenutke u kojima obično popustiš.' },
@@ -32,9 +33,9 @@ export default function Mechanism() {
           ))}
         </div>
         <Reveal className="mech-cta">
-          <a href="#cta" className="btn btn-primary">
+          <QuizLink className="btn btn-primary" location="mechanism">
             Uradi besplatni kviz
-          </a>
+          </QuizLink>
         </Reveal>
       </div>
     </section>

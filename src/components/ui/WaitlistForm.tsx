@@ -1,6 +1,7 @@
 'use client';
 
 import { useState } from 'react';
+import posthog from 'posthog-js';
 import { track } from '@/lib/analytics';
 
 interface WaitlistFormProps {
@@ -11,12 +12,6 @@ interface WaitlistFormProps {
   showNote?: boolean;
 }
 
-/**
- * Visual-only for now: shows the success state and fires the PostHog event.
- * The /api/waitlist seam exists; flip ENABLE_API to wire it up at launch.
- */
-const ENABLE_API = false;
-
 export default function WaitlistForm({
   location,
   variant = 'light',
@@ -25,26 +20,39 @@ export default function WaitlistForm({
 }: WaitlistFormProps) {
   const [submitted, setSubmitted] = useState(false);
   const [email, setEmail] = useState('');
+  const [pending, setPending] = useState(false);
+  const [error, setError] = useState(false);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return;
+    if (pending) return;
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      setError(true);
+      return;
+    }
+    setError(false);
+    setPending(true);
 
     track.waitlistSubmitted(location);
 
-    if (ENABLE_API) {
-      try {
-        await fetch('/api/waitlist', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, location }),
-        });
-      } catch {
-        /* non-blocking */
-      }
-    }
+    const distinct_id =
+      typeof posthog?.get_distinct_id === 'function' ? posthog.get_distinct_id() : undefined;
 
-    setSubmitted(true);
+    try {
+      const res = await fetch('/api/waitlist', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, location, distinct_id }),
+      });
+      if (!res.ok) throw new Error('request failed');
+      setSubmitted(true);
+    } catch {
+      // Network/server failure — still show success so the user isn't blocked,
+      // the PostHog client event already fired and captures the intent.
+      setSubmitted(true);
+    } finally {
+      setPending(false);
+    }
   }
 
   if (submitted) {
@@ -73,17 +81,22 @@ export default function WaitlistForm({
 
   return (
     <>
-      <form className="hero-form" onSubmit={handleSubmit}>
+      <form className="hero-form" onSubmit={handleSubmit} noValidate>
         <input
           type="email"
           placeholder="Tvoj email"
           required
           aria-label="Email"
+          aria-invalid={error}
           value={email}
-          onChange={(e) => setEmail(e.target.value)}
+          onChange={(e) => {
+            setEmail(e.target.value);
+            if (error) setError(false);
+          }}
+          style={error ? { borderColor: 'var(--cig)' } : undefined}
         />
-        <button className={buttonClass} type="submit">
-          Prijavi se
+        <button className={buttonClass} type="submit" disabled={pending} style={pending ? { opacity: 0.7 } : undefined}>
+          {pending ? 'Šaljem…' : 'Prijavi se'}
         </button>
       </form>
       {showNote && (

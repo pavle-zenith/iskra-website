@@ -9,7 +9,6 @@ export const IS_PRE_LAUNCH = !APP_STORE_URL || !PLAY_STORE_URL;
 
 export const INSTAGRAM_URL = 'https://www.instagram.com/iskraclub_';
 export const TIKTOK_URL = 'https://www.tiktok.com/@iskraclub';
-export const FACEBOOK_URL = 'https://www.facebook.com/iskraclub';
 
 // Seeded social-proof numbers (labeled beta reactions; not real review ratings)
 export const WAITLIST_BASE_COUNT = 2596;

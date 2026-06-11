@@ -13,7 +13,6 @@ function capture(event: string, props?: Props) {
 export const track = {
   waitlistSubmitted: (location: 'hero' | 'footer') =>
     capture('waitlist_submitted', { location, source: 'landing' }),
-  navCtaClicked: () => capture('nav_cta_clicked', {}),
   quizCtaClicked: (location: string) => capture('quiz_cta_clicked', { location }),
   sectionViewed: (section: string) => capture('section_viewed', { section }),
   faqOpened: (question: string) => capture('faq_opened', { question }),

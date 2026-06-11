@@ -6,10 +6,10 @@ import { WAITLIST_BASE_COUNT } from '@/lib/constants';
 
 export default function Reviews() {
   return (
-    <section className="section" style={{ background: 'var(--bg-cool)' }} aria-label="Reakcije iz beta verzije">
+    <section className="section reviews-section" aria-label="Reakcije iz beta verzije">
       <Reveal className="rev-head">
         <div className="rev-mark">
-          <Image src="/brand/iskra-logo-sm.png" alt="" width={34} height={34} aria-hidden="true" />
+          <Image src="/brand/iskra-flame-white.png" alt="" width={62} height={62} aria-hidden="true" />
         </div>
         <div className="rev-bignum">
           <CountUp end={WAITLIST_BASE_COUNT} />+
