@@ -14,11 +14,11 @@ const manrope = Manrope({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: 'Iskra — Prestani da pušiš. Ovaj put zaista.',
+    default: 'ISKRA | Aplikacija za prestanak pušenja u Srbiji #1',
     template: '%s · Iskra',
   },
   description:
-    'Iskra je aplikacija koja ti pomaže da prestaneš da pušiš — sa alatom za poriv, praćenjem uštede i podrškom na srpskom, bez osuđivanja. Prijavi se na listu čekanja.',
+    'Iskra ti pomaže da prestaneš da pušiš uz alate za poriv, praćenje napretka, ušteđen novac i podršku bez osuđivanja. Uđi na Early Access listu.',
   applicationName: 'Iskra',
   keywords: [
     'prestani da pušiš',
@@ -43,18 +43,19 @@ export const metadata: Metadata = {
     locale: 'sr_RS',
     url: SITE_URL,
     siteName: 'Iskra',
-    title: 'Prestani da pušiš. Ovaj put zaista.',
+    title: 'ISKRA | Aplikacija za prestanak pušenja u Srbiji #1',
     description:
-      'Iskra je aplikacija za prestanak pušenja napravljena za Srbiju. Pomaže ti baš u trenutku kada ti se zapali.',
+      'Iskra ti pomaže da prestaneš da pušiš uz alate za poriv, praćenje napretka, ušteđen novac i podršku bez osuđivanja. Uđi na Early Access listu.',
     images: [
-      { url: '/og/og-default.jpg', width: 1200, height: 630, alt: 'Iskra — aplikacija za prestanak pušenja' },
+      { url: '/og/iskra-og.png', width: 1200, height: 630, alt: 'Iskra — aplikacija za prestanak pušenja u Srbiji #1' },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Prestani da pušiš. Ovaj put zaista.',
-    description: 'Iskra je aplikacija za prestanak pušenja napravljena za Srbiju.',
-    images: ['/og/og-default.jpg'],
+    title: 'ISKRA | Aplikacija za prestanak pušenja u Srbiji #1',
+    description:
+      'Iskra ti pomaže da prestaneš da pušiš uz alate za poriv, praćenje napretka, ušteđen novac i podršku bez osuđivanja. Uđi na Early Access listu.',
+    images: ['/og/iskra-og.png'],
   },
   robots: {
     index: true,
